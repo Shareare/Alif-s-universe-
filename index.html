@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>Website Under Construction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bgChange 10s infinite alternate;
+            color: white;
+            text-align: center;
+        }
+
+        @keyframes bgChange {
+            0% { background: linear-gradient(135deg, #ff512f, #dd2476); }
+            25% { background: linear-gradient(135deg, #1fa2ff, #12d8fa); }
+            50% { background: linear-gradient(135deg, #8360c3, #2ebf91); }
+            75% { background: linear-gradient(135deg, #ff8008, #ffc837); }
+            100% { background: linear-gradient(135deg, #654ea3, #eaafc8); }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.45);
+            padding: 45px;
+            border-radius: 20px;
+            max-width: 650px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .emoji {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 20px;
+            animation: textColor 3s infinite alternate;
+        }
+
+        @keyframes textColor {
+            0% { color: #ffeb3b; }
+            50% { color: #00e5ff; }
+            100% { color: #ff80ab; }
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .english {
+            margin-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="emoji">🚧👷‍♂️🏗️</div>
+
+        <h1>ওয়েবসাইট নির্মাণাধীন</h1>
+
+        <p>
+            আমার ওয়েবসাইটে আসার জন্য আপনাকে ধন্যবাদ।  
+            বর্তমানে ওয়েবসাইটে কাজ চলছে।  
+            কিছুদিনের মধ্যেই এটি সম্পূর্ণভাবে সচল হবে।
+        </p>
+
+        <div class="english">
+            <h1>Website Under Construction</h1>
+            <p>
+                Thank you for visiting my website.  
+                The website is currently under construction.  
+                It will be live very soon.
+            </p>
+        </div>
+
+        <footer>
+            © 2026 | ALIF'S UNIVERSE 
+        </footer>
+    </div>
+
+</body>
+</html>
