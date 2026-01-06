@@ -1,209 +1,256 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Interest</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHARIARE ALIF - তথ্য সংগ্রহ ফর্ম</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* বেসিক রিসেট */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+        /* অ্যানিমেটেড ব্যাকগ্রাউন্ড */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #1cb5e0, #000851, #1cb5e0);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            padding: 20px;
+        }
 
-    .container {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 16px;
-      max-width: 420px;
-      width: 100%;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 6px;
-    }
+        /* গ্লাস ইফেক্ট কন্টেইনার */
+        .container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
 
-    p {
-      text-align: center;
-      font-size: 14px;
-      opacity: 0.9;
-      margin-bottom: 18px;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .options {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+        /* হেডার এবং ঘড়ি */
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header h3 {
+            font-weight: 300;
+            color: #ffecd2;
+            margin-bottom: 15px;
+        }
 
-    .option {
-      background: rgba(255,255,255,0.18);
-      padding: 14px;
-      border-radius: 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 14px;
-    }
+        .clock-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
 
-    .option:hover {
-      background: rgba(255,255,255,0.35);
-      transform: scale(1.05);
-    }
+        /* ফর্ম ডিজাইন */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-    input[type="checkbox"] {
-      display: none;
-    }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
 
-    input:checked + .option {
-      background: #00ffcc;
-      color: #000;
-      font-weight: bold;
-    }
+        .form-group i {
+            margin-right: 8px;
+        }
 
-    textarea {
-      width: 100%;
-      margin-top: 14px;
-      border-radius: 10px;
-      padding: 10px;
-      border: none;
-      resize: none;
-      font-family: inherit;
-    }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1em;
+            outline: none;
+            transition: 0.3s;
+        }
 
-    button {
-      width: 100%;
-      margin-top: 18px;
-      padding: 14px;
-      border: none;
-      border-radius: 12px;
-      background: #00ffcc;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+        /* প্লেসহোল্ডার কালার */
+        ::placeholder { color: rgba(255, 255, 255, 0.7); }
 
-    button:hover {
-      background: #00e6b8;
-    }
+        input:focus, select:focus, textarea:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
 
-    .line {
-      height: 2px;
-      width: 60%;
-      margin: 14px auto;
-      background: linear-gradient(90deg, #00ffcc, transparent);
-      animation: glow 2s infinite alternate;
-    }
+        select option {
+            background: #000851; /* ড্রপডাউনের ব্যাকগ্রাউন্ড */
+            color: white;
+        }
 
-    @keyframes glow {
-      from { opacity: 0.4; }
-      to { opacity: 1; }
-    }
+        /* সাবমিট বাটন */
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
 
-    .footer {
-      text-align: center;
-      font-size: 12px;
-      opacity: 0.75;
-      margin-top: 12px;
-    }
-  </style>
+        .btn-submit:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);
+        }
+
+        /* ফুটার */
+        .footer {
+            margin-top: 25px;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        /* মোবাইল রেসপন্সিভ */
+        @media (max-width: 480px) {
+            .container { padding: 20px; }
+            .header h1 { font-size: 1.5em; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
+        <div class="header">
+            <h1 id="greetingText">স্বাগতম!</h1>
+            <h3>SHARIARE ALIF এর পক্ষ থেকে অভিনন্দন</h3>
+            
+            <div class="clock-box">
+                <i class="far fa-clock"></i> <span id="digitalClock">00:00:00 AM</span>
+            </div>
+        </div>
 
-  <h1>আপনার আগ্রহ নির্বাচন করুন</h1>
-  <p id="greeting">Welcome 😊</p>
+        <form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
+            
+            <input type="hidden" name="_subject" value="New Website Idea Submission!">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> আপনার নাম</label>
+                <input type="text" name="name" placeholder="আপনার পুরো নাম লিখুন" required>
+            </div>
 
-  <form action="https://formsubmit.co/sharearealif7@gmail.com"
-      method="POST"
-      target="_blank">
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> ইমেইল এড্রেস</label>
+                <input type="email" name="email" placeholder="example@gmail.com" required>
+            </div>
 
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="thankyou.html">
+            <div class="form-group">
+                <label><i class="fas fa-calendar-alt"></i> বয়স</label>
+                <input type="number" name="age" placeholder="আপনার বয়স কত?" required>
+            </div>
 
-    <div class="options">
-      <label>
-        <input type="checkbox" name="Interest[]" value="Technology">
-        <div class="option">💻 Technology</div>
-      </label>
+            <div class="form-group">
+                <label><i class="fas fa-venus-mars"></i> লিঙ্গ</label>
+                <select name="gender" required>
+                    <option value="" disabled selected>নির্বাচন করুন</option>
+                    <option value="Male">পুরুষ</option>
+                    <option value="Female">মহিলা</option>
+                    <option value="Other">অন্যান্য</option>
+                </select>
+            </div>
 
-      <label>
-        <input type="checkbox" name="Interest[]" value="Online Income">
-        <div class="option">💰 Online Income</div>
-      </label>
+            <div class="form-group">
+                <label><i class="fas fa-lightbulb"></i> আপনার মতামত (ওয়েবসাইট আইডিয়া)</label>
+                <textarea name="message" rows="4" placeholder="আপনি আমার কাছ থেকে কেমন ওয়েবসাইট আশা করেন? বিস্তারিত লিখুন..." required></textarea>
+            </div>
 
-      <label>
-        <input type="checkbox" name="Interest[]" value="Web Design">
-        <div class="option">🎨 Web Design</div>
-      </label>
+            <button type="submit" class="btn-submit">তথ্য জমা দিন <i class="fas fa-paper-plane"></i></button>
+        </form>
 
-      <label>
-        <input type="checkbox" name="Interest[]" value="Facebook & YouTube">
-        <div class="option">📱 FB / YouTube</div>
-      </label>
-
-      <label>
-        <input type="checkbox" name="Interest[]" value="Education">
-        <div class="option">📚 Education</div>
-      </label>
-
-      <label>
-        <input type="checkbox" name="Interest[]" value="Others">
-        <div class="option">✨ Others</div>
-      </label>
+        <div class="footer">
+            &copy; 2026 SHARIARE ALIF | ALL RIGHTS RESERVED.
+        </div>
     </div>
 
-    <textarea name="Message" rows="3" placeholder="আপনি চাইলে অতিরিক্ত কিছু লিখতে পারেন..."></textarea>
+    <script>
+        // ঘড়ি এবং গ্রিটিং ফাংশন
+        function updateClockAndGreeting() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            // সময়ের গ্রিটিং লজিক
+            const greetingElement = document.getElementById('greetingText');
+            let greetingMsg = "স্বাগতম";
 
-    <button type="submit">Submit Interest</button>
-  </form>
+            if (hours >= 5 && hours < 12) {
+                greetingMsg = "শুভ সকাল!";
+            } else if (hours >= 12 && hours < 17) {
+                greetingMsg = "শুভ দুপুর!";
+            } else if (hours >= 17 && hours < 20) {
+                greetingMsg = "শুভ বিকাল!";
+            } else {
+                greetingMsg = "শুভ রাত্রি!";
+            }
+            
+            greetingElement.innerText = greetingMsg;
 
-  <div class="line"></div>
+            // ১২ ঘণ্টার ঘড়ি ফরম্যাট
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+            document.getElementById('digitalClock').innerText = timeString;
+        }
 
-  <div class="footer">
-    🔒 আপনার তথ্য নিরাপদ এবং শুধুমাত্র উন্নতির জন্য ব্যবহার হবে<br>
-    <div id="clock"></div>
-    © Alif's Universe
-  </div>
-
-</div>
-
-<script>
-  // Clock
-  function updateClock() {
-    const now = new Date();
-    let h = now.getHours();
-    let m = now.getMinutes();
-    let s = now.getSeconds();
-
-    h = h < 10 ? "0" + h : h;
-    m = m < 10 ? "0" + m : m;
-    s = s < 10 ? "0" + s : s;
-
-    document.getElementById("clock").innerText =
-      "🕒 " + h + ":" + m + ":" + s;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  // Greeting
-  const hour = new Date().getHours();
-  let greet = "Welcome 😊";
-  if (hour < 12) greet = "🌅 শুভ সকাল";
-  else if (hour < 18) greet = "🌤 শুভ বিকাল";
-  else greet = "🌙 শুভ সন্ধ্যা";
-  document.getElementById("greeting").innerText = greet;
-</script>
+        // প্রতি সেকেন্ডে আপডেট হবে
+        setInterval(updateClockAndGreeting, 1000);
+        
+        // পেজ লোড হওয়ার সাথে সাথে একবার রান হবে
+        updateClockAndGreeting();
+    </script>
 
 </body>
 </html>
