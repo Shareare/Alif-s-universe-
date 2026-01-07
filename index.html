@@ -8,153 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* বেসিক রিসেট */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Hind Siliguri', sans-serif;
-        }
-
-        /* অ্যানিমেটেড ব্যাকগ্রাউন্ড */
+        /* স্টাইল আগের মতোই আছে */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
             background: linear-gradient(45deg, #1cb5e0, #000851, #1cb5e0);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: white;
-            padding: 20px;
+            background-size: 400% 400%; animation: gradientBG 15s ease infinite; color: white; padding: 20px;
         }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* গ্লাস ইফেক্ট কন্টেইনার */
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .container {
-            position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            text-align: center;
-            animation: fadeIn 1.5s ease-in-out;
+            position: relative; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px;
+            width: 100%; max-width: 500px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center; animation: fadeIn 1.5s ease-in-out;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* হেডার এবং ঘড়ি */
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header h3 {
-            font-weight: 300;
-            color: #ffecd2;
-            margin-bottom: 15px;
-        }
-
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .header h1 { font-size: 2em; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header h3 { font-weight: 300; color: #ffecd2; margin-bottom: 15px; }
         .clock-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 25px;
-            font-size: 1.2em;
-            font-weight: bold;
-            letter-spacing: 2px;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0, 0, 0, 0.3); padding: 10px 20px; border-radius: 50px; display: inline-block;
+            margin-bottom: 25px; font-size: 1.2em; font-weight: bold; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.2);
         }
-
-        /* ফর্ম ডিজাইন */
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #e0e0e0;
-        }
-
-        .form-group i {
-            margin-right: 8px;
-        }
-
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #e0e0e0; }
+        .form-group i { margin-right: 8px; }
         input, select, textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: none;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 1em;
-            outline: none;
-            transition: 0.3s;
+            width: 100%; padding: 12px 15px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.2);
+            color: white; font-size: 1em; outline: none; transition: 0.3s;
         }
-
-        /* প্লেসহোল্ডার কালার */
         ::placeholder { color: rgba(255, 255, 255, 0.7); }
-
-        input:focus, select:focus, textarea:focus {
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        select option {
-            background: #000851; /* ড্রপডাউনের ব্যাকগ্রাউন্ড */
-            color: white;
-        }
-
-        /* সাবমিট বাটন */
+        input:focus, select:focus, textarea:focus { background: rgba(255, 255, 255, 0.3); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        select option { background: #000851; color: white; }
         .btn-submit {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(90deg, #ff8a00, #e52e71);
-            color: white;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 10px;
+            width: 100%; padding: 12px; border: none; border-radius: 50px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71); color: white; font-size: 1.2em; font-weight: bold;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px;
         }
-
-        .btn-submit:hover {
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4);
-        }
-
-        /* ফুটার */
-        .footer {
-            margin-top: 25px;
-            font-size: 0.8em;
-            opacity: 0.7;
-        }
-
-        /* মোবাইল রেসপন্সিভ */
-        @media (max-width: 480px) {
-            .container { padding: 20px; }
-            .header h1 { font-size: 1.5em; }
-        }
+        .btn-submit:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4); }
+        .footer { margin-top: 25px; font-size: 0.8em; opacity: 0.7; }
+        @media (max-width: 480px) { .container { padding: 20px; } .header h1 { font-size: 1.5em; } }
     </style>
 </head>
 <body>
@@ -163,7 +55,6 @@
         <div class="header">
             <h1 id="greetingText">স্বাগতম!</h1>
             <h3>SHARIARE ALIF এর পক্ষ থেকে অভিনন্দন</h3>
-            
             <div class="clock-box">
                 <i class="far fa-clock"></i> <span id="digitalClock">00:00:00 AM</span>
             </div>
@@ -174,6 +65,8 @@
             <input type="hidden" name="_subject" value="New Website Idea Submission!">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
+
+            <input type="hidden" name="_next" value="https://www.facebook.com">
             
             <div class="form-group">
                 <label><i class="fas fa-user"></i> আপনার নাম</label>
@@ -209,12 +102,11 @@
         </form>
 
         <div class="footer">
-            &copy; 2026 SHARIARE ALIF | ALL RIGHTS RESERVED.
+            &copy; ২০২৪ SHARIARE ALIF | সকল অধিকার সংরক্ষিত
         </div>
     </div>
 
     <script>
-        // ঘড়ি এবং গ্রিটিং ফাংশন
         function updateClockAndGreeting() {
             const now = new Date();
             let hours = now.getHours();
@@ -222,33 +114,19 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             let ampm = hours >= 12 ? 'PM' : 'AM';
             
-            // সময়ের গ্রিটিং লজিক
             const greetingElement = document.getElementById('greetingText');
             let greetingMsg = "স্বাগতম";
 
-            if (hours >= 5 && hours < 12) {
-                greetingMsg = "শুভ সকাল!";
-            } else if (hours >= 12 && hours < 17) {
-                greetingMsg = "শুভ দুপুর!";
-            } else if (hours >= 17 && hours < 20) {
-                greetingMsg = "শুভ বিকাল!";
-            } else {
-                greetingMsg = "শুভ রাত্রি!";
-            }
+            if (hours >= 5 && hours < 12) greetingMsg = "শুভ সকাল!";
+            else if (hours >= 12 && hours < 17) greetingMsg = "শুভ দুপুর!";
+            else if (hours >= 17 && hours < 20) greetingMsg = "শুভ বিকাল!";
+            else greetingMsg = "শুভ রাত্রি!";
             
             greetingElement.innerText = greetingMsg;
-
-            // ১২ ঘণ্টার ঘড়ি ফরম্যাট
-            hours = hours % 12;
-            hours = hours ? hours : 12; 
-            const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
-            document.getElementById('digitalClock').innerText = timeString;
+            hours = hours % 12; hours = hours ? hours : 12; 
+            document.getElementById('digitalClock').innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
         }
-
-        // প্রতি সেকেন্ডে আপডেট হবে
         setInterval(updateClockAndGreeting, 1000);
-        
-        // পেজ লোড হওয়ার সাথে সাথে একবার রান হবে
         updateClockAndGreeting();
     </script>
 
