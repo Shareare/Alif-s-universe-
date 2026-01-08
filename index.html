@@ -8,23 +8,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* বেসিক স্টাইল */
+        /* --- বেসিক স্টাইল --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
+        
         body {
             display: flex; justify-content: center; align-items: center; min-height: 100vh;
             background: linear-gradient(45deg, #1cb5e0, #000851, #1cb5e0);
             background-size: 400% 400%; animation: gradientBG 15s ease infinite; color: white; padding: 20px;
         }
+        
         @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
+        /* --- গ্লাস কন্টেইনার --- */
         .container {
-            position: relative; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px;
+            position: relative; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px;
             width: 100%; max-width: 500px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             text-align: center; animation: fadeIn 1.5s ease-in-out;
         }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         
+        /* --- হেডার এবং ঘড়ি --- */
         .header h1 { font-size: 2em; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         .header h3 { font-weight: 300; color: #ffecd2; margin-bottom: 15px; }
         .clock-box {
@@ -32,59 +37,26 @@
             margin-bottom: 20px; font-size: 1.1em; font-weight: bold; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* টেলিগ্রাম প্রোমো বক্স ডিজাইন */
+        /* --- টেলিগ্রাম প্রোমো বক্স --- */
         .telegram-promo {
-            background: rgba(0, 136, 204, 0.25); /* টেলিগ্রাম ব্লু শেড */
-            border: 1px solid rgba(0, 136, 204, 0.6);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(0, 136, 204, 0.3);
-            animation: pulse-border 2s infinite;
+            background: rgba(0, 136, 204, 0.25); border: 1px solid rgba(0, 136, 204, 0.6);
+            padding: 15px; border-radius: 15px; margin-bottom: 20px; text-align: center;
+            box-shadow: 0 0 15px rgba(0, 136, 204, 0.3); animation: pulse-border 2s infinite;
         }
-
         @keyframes pulse-border {
             0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7); }
             70% { box-shadow: 0 0 0 10px rgba(0, 136, 204, 0); }
             100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
         }
-
-        .telegram-promo h4 {
-            color: #ffd700;
-            font-size: 1.3em;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .telegram-promo p {
-            font-size: 0.95em;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
+        .telegram-promo h4 { color: #ffd700; font-size: 1.3em; margin-bottom: 5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .telegram-promo p { font-size: 0.95em; margin-bottom: 12px; line-height: 1.4; }
         .btn-telegram {
-            display: inline-block;
-            background: #0088cc;
-            color: white;
-            padding: 10px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1em;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            display: inline-block; background: #0088cc; color: white; padding: 10px 25px; border-radius: 50px;
+            text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
+        .btn-telegram:hover { background: #00aaff; transform: scale(1.05); }
 
-        .btn-telegram:hover {
-            background: #00aaff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
-
-        /* ফর্ম ইনপুট স্টাইল */
+        /* --- ফর্ম ইনপুট --- */
         .form-group { margin-bottom: 15px; text-align: left; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #e0e0e0; font-size: 0.9em; }
         .form-group i { margin-right: 8px; }
@@ -99,12 +71,34 @@
         .btn-submit {
             width: 100%; padding: 12px; border: none; border-radius: 50px;
             background: linear-gradient(90deg, #ff8a00, #e52e71); color: white; font-size: 1.2em; font-weight: bold;
-            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 5px;
         }
         .btn-submit:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4); }
-        .footer { margin-top: 20px; font-size: 0.8em; opacity: 0.7; }
-        
-        @media (max-width: 480px) { .container { padding: 20px; } .header h1 { font-size: 1.5em; } }
+
+        /* --- স্মার্ট লিংক বোনাস বাটন --- */
+        .smart-link-btn {
+            display: block; width: 100%; margin-top: 20px; padding: 12px;
+            background: linear-gradient(45deg, #8e2de2, #4a00e0);
+            border-radius: 10px; color: white; text-decoration: none; font-weight: bold;
+            border: 2px dashed rgba(255,255,255,0.5); position: relative; overflow: hidden;
+            transition: 0.3s;
+        }
+        .smart-link-btn:hover { background: linear-gradient(45deg, #4a00e0, #8e2de2); transform: translateY(-3px); }
+        .smart-link-btn span { position: relative; z-index: 2; }
+        .smart-link-btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 2s infinite;
+        }
+        @keyframes shine { 100% { left: 100%; } }
+
+        /* --- বিজ্ঞাপন (ব্যানার) --- */
+        .ad-container { margin-top: 20px; display: flex; justify-content: center; }
+        .ad-container img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s; }
+        .ad-container img:hover { transform: scale(1.02); }
+
+        .footer { margin-top: 15px; font-size: 0.8em; opacity: 0.7; }
+        @media (max-width: 480px) { .container { padding: 15px; } .header h1 { font-size: 1.5em; } }
     </style>
 </head>
 <body>
@@ -120,7 +114,7 @@
 
         <div class="telegram-promo">
             <h4>💰 ঘরে বসে ইনকাম করতে চান? 💰</h4>
-            <p>প্রতিদিন সেরা সব <strong>ফ্রি অফার</strong> এবং নিশ্চিত <strong>ইনকাম করার টিপস</strong> পেতে আমাদের টেলিগ্রাম চ্যানেলে এখনই যুক্ত হোন। মিস করবেন না!</p>
+            <p>প্রতিদিন সেরা সব <strong>ফ্রি অফার</strong> এবং নিশ্চিত <strong>ইনকাম করার টিপস</strong> পেতে আমাদের টেলিগ্রাম চ্যানেলে এখনই যুক্ত হোন।</p>
             <a href="https://t.me/FreeOfferDailyBD" target="_blank" class="btn-telegram">
                 <i class="fab fa-telegram-plane"></i> ইনকাম করতে এখানে ক্লিক করুন
             </a>
@@ -130,7 +124,8 @@
             
             <input type="hidden" name="_subject" value="New Website Idea Submission!">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.facebook.com">
+            
+            <input type="hidden" name="_next" value="https://www.effectivegatecpm.com/pyye10783?key=3fe4519ebe0540e7863c7ecc297a37e1">
             
             <div class="form-group">
                 <label><i class="fas fa-user"></i> আপনার নাম</label>
@@ -159,11 +154,21 @@
 
             <div class="form-group">
                 <label><i class="fas fa-lightbulb"></i> আপনার মতামত</label>
-                <textarea name="message" rows="3" placeholder="কেমন ওয়েবসাইট চান?..." required></textarea>
+                <textarea name="message" rows="3" placeholder="কেমন ওয়েবসাইট চান? বিস্তারিত..." required></textarea>
             </div>
 
             <button type="submit" class="btn-submit">তথ্য জমা দিন <i class="fas fa-paper-plane"></i></button>
         </form>
+
+        <a href="https://www.effectivegatecpm.com/pyye10783?key=3fe4519ebe0540e7863c7ecc297a37e1" target="_blank" class="smart-link-btn">
+            <span>🎁 স্পেশাল বোনাস পেতে ক্লিক করুন 🎁</span>
+        </a>
+
+        <div class="ad-container">
+            <a href="https://shrinkme.io/ref/shararealif" target="_blank">
+                <img src="https://shrinkme.io/banners/ref/336x280.png" title="Make short links and earn the biggest money" alt="Earn Money Banner" />
+            </a>
+        </div>
 
         <div class="footer">
             &copy; ২০২৪ SHARIARE ALIF | সকল অধিকার সংরক্ষিত
