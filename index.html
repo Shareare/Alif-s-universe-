@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHARIARE ALIF - তথ্য সংগ্রহ ফর্ম</title>
+    <title>SHARIARE ALIF - ফ্রি অফার ও ইনকাম</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* স্টাইল আগের মতোই আছে */
+        /* বেসিক স্টাইল */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
         body {
             display: flex; justify-content: center; align-items: center; min-height: 100vh;
@@ -16,6 +16,7 @@
             background-size: 400% 400%; animation: gradientBG 15s ease infinite; color: white; padding: 20px;
         }
         @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
         .container {
             position: relative; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px;
             width: 100%; max-width: 500px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -23,29 +24,86 @@
             text-align: center; animation: fadeIn 1.5s ease-in-out;
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        
         .header h1 { font-size: 2em; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
         .header h3 { font-weight: 300; color: #ffecd2; margin-bottom: 15px; }
         .clock-box {
-            background: rgba(0, 0, 0, 0.3); padding: 10px 20px; border-radius: 50px; display: inline-block;
-            margin-bottom: 25px; font-size: 1.2em; font-weight: bold; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0, 0, 0, 0.3); padding: 8px 20px; border-radius: 50px; display: inline-block;
+            margin-bottom: 20px; font-size: 1.1em; font-weight: bold; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.2);
         }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #e0e0e0; }
+
+        /* টেলিগ্রাম প্রোমো বক্স ডিজাইন */
+        .telegram-promo {
+            background: rgba(0, 136, 204, 0.25); /* টেলিগ্রাম ব্লু শেড */
+            border: 1px solid rgba(0, 136, 204, 0.6);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 136, 204, 0.3);
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 136, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
+        }
+
+        .telegram-promo h4 {
+            color: #ffd700;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .telegram-promo p {
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .btn-telegram {
+            display: inline-block;
+            background: #0088cc;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .btn-telegram:hover {
+            background: #00aaff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* ফর্ম ইনপুট স্টাইল */
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #e0e0e0; font-size: 0.9em; }
         .form-group i { margin-right: 8px; }
         input, select, textarea {
-            width: 100%; padding: 12px 15px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.2);
+            width: 100%; padding: 10px 15px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.2);
             color: white; font-size: 1em; outline: none; transition: 0.3s;
         }
         ::placeholder { color: rgba(255, 255, 255, 0.7); }
         input:focus, select:focus, textarea:focus { background: rgba(255, 255, 255, 0.3); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
         select option { background: #000851; color: white; }
+        
         .btn-submit {
             width: 100%; padding: 12px; border: none; border-radius: 50px;
             background: linear-gradient(90deg, #ff8a00, #e52e71); color: white; font-size: 1.2em; font-weight: bold;
             cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px;
         }
         .btn-submit:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4); }
-        .footer { margin-top: 25px; font-size: 0.8em; opacity: 0.7; }
+        .footer { margin-top: 20px; font-size: 0.8em; opacity: 0.7; }
+        
         @media (max-width: 480px) { .container { padding: 20px; } .header h1 { font-size: 1.5em; } }
     </style>
 </head>
@@ -60,12 +118,18 @@
             </div>
         </div>
 
+        <div class="telegram-promo">
+            <h4>💰 ঘরে বসে ইনকাম করতে চান? 💰</h4>
+            <p>প্রতিদিন সেরা সব <strong>ফ্রি অফার</strong> এবং নিশ্চিত <strong>ইনকাম করার টিপস</strong> পেতে আমাদের টেলিগ্রাম চ্যানেলে এখনই যুক্ত হোন। মিস করবেন না!</p>
+            <a href="https://t.me/FreeOfferDailyBD" target="_blank" class="btn-telegram">
+                <i class="fab fa-telegram-plane"></i> ইনকাম করতে এখানে ক্লিক করুন
+            </a>
+        </div>
+
         <form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
             
             <input type="hidden" name="_subject" value="New Website Idea Submission!">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-
             <input type="hidden" name="_next" value="https://www.facebook.com">
             
             <div class="form-group">
@@ -94,15 +158,15 @@
             </div>
 
             <div class="form-group">
-                <label><i class="fas fa-lightbulb"></i> আপনার মতামত (ওয়েবসাইট আইডিয়া)</label>
-                <textarea name="message" rows="4" placeholder="আপনি আমার কাছ থেকে কেমন ওয়েবসাইট আশা করেন? বিস্তারিত লিখুন..." required></textarea>
+                <label><i class="fas fa-lightbulb"></i> আপনার মতামত</label>
+                <textarea name="message" rows="3" placeholder="কেমন ওয়েবসাইট চান?..." required></textarea>
             </div>
 
             <button type="submit" class="btn-submit">তথ্য জমা দিন <i class="fas fa-paper-plane"></i></button>
         </form>
 
         <div class="footer">
-            &copy; 2026 SHARIARE ALIF | ALL RIGHTS RESERVED. 
+            &copy; ২০২৪ SHARIARE ALIF | সকল অধিকার সংরক্ষিত
         </div>
     </div>
 
