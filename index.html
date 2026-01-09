@@ -56,11 +56,30 @@
         }
         .btn-telegram:hover { background: #00aaff; transform: scale(1.05); }
 
+        /* --- আবশ্যিক ভিজিট সেকশন (Mandatory) --- */
+        .mandatory-box {
+            background: rgba(220, 53, 69, 0.2); border: 2px solid #dc3545;
+            padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left;
+        }
+        .mandatory-box h5 { color: #ff6b6b; font-size: 1.1em; margin-bottom: 8px; display: flex; align-items: center; }
+        .mandatory-box h5 i { margin-right: 8px; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .visit-link {
+            display: block; background: #dc3545; color: white; text-align: center; padding: 10px;
+            border-radius: 5px; text-decoration: none; margin: 10px 0; font-weight: bold;
+            transition: 0.3s;
+        }
+        .visit-link:hover { background: #ff4d4d; }
+        
+        .checkbox-container { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9em; margin-top: 10px; }
+        .checkbox-container input { width: 20px; height: 20px; margin-top: 2px; cursor: pointer; }
+
         /* --- ফর্ম ইনপুট --- */
         .form-group { margin-bottom: 15px; text-align: left; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #e0e0e0; font-size: 0.9em; }
         .form-group i { margin-right: 8px; }
-        input, select, textarea {
+        input[type="text"], input[type="email"], input[type="number"], select, textarea {
             width: 100%; padding: 10px 15px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.2);
             color: white; font-size: 1em; outline: none; transition: 0.3s;
         }
@@ -85,13 +104,7 @@
         }
         .smart-link-btn:hover { background: linear-gradient(45deg, #4a00e0, #8e2de2); transform: translateY(-3px); }
         .smart-link-btn span { position: relative; z-index: 2; }
-        .smart-link-btn::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shine 2s infinite;
-        }
-        @keyframes shine { 100% { left: 100%; } }
-
+        
         /* --- বিজ্ঞাপন (ব্যানার) --- */
         .ad-container { margin-top: 20px; display: flex; justify-content: center; }
         .ad-container img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s; }
@@ -125,7 +138,7 @@
             <input type="hidden" name="_subject" value="New Website Idea Submission!">
             <input type="hidden" name="_captcha" value="false">
             
-            <input type="hidden" name="_next" value="https://www.effectivegatecpm.com/pyye10783?key=3fe4519ebe0540e7863c7ecc297a37e1">
+            <input type="hidden" name="_next" value="https://smartonlineearningguide2026.blogspot.com">
             
             <div class="form-group">
                 <label><i class="fas fa-user"></i> আপনার নাম</label>
@@ -152,6 +165,20 @@
                 </select>
             </div>
 
+            <div class="mandatory-box">
+                <h5><i class="fas fa-exclamation-circle"></i> আবশ্যিক ধাপ:</h5>
+                <p style="font-size: 0.9em;">ফর্ম সাবমিট করার আগে আপনাকে অবশ্যই নিচের আর্টিকেলে ভিজিট করতে হবে।</p>
+                
+                <a href="https://smartonlineearningguide2026.blogspot.com/2026/01/what-is-online-earning-and-how.html?m=1" target="_blank" class="visit-link">
+                    <i class="fas fa-external-link-alt"></i> এখানে ক্লিক করে আর্টিকেলটি পড়ুন
+                </a>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" name="visited_article" required>
+                    <label>আমি উপরের লিংকে ক্লিক করেছি এবং আর্টিকেলটি পড়েছি। (এটি পূরণ করা বাধ্যতামূলক)</label>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label><i class="fas fa-lightbulb"></i> আপনার মতামত</label>
                 <textarea name="message" rows="3" placeholder="কেমন ওয়েবসাইট চান? বিস্তারিত..." required></textarea>
@@ -160,8 +187,8 @@
             <button type="submit" class="btn-submit">তথ্য জমা দিন <i class="fas fa-paper-plane"></i></button>
         </form>
 
-        <a href="https://www.effectivegatecpm.com/pyye10783?key=3fe4519ebe0540e7863c7ecc297a37e1" target="_blank" class="smart-link-btn">
-            <span>🎁 স্পেশাল বোনাস পেতে ক্লিক করুন 🎁</span>
+        <a href="https://smartonlineearningguide2026.blogspot.com" target="_blank" class="smart-link-btn">
+            <span>🎁 আরও ইনকাম টিপস পেতে ক্লিক করুন 🎁</span>
         </a>
 
         <div class="ad-container">
