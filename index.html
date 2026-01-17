@@ -1,230 +1,360 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHARIARE ALIF - ফ্রি অফার ও ইনকাম</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        /* --- বেসিক স্টাইল --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
-        
-        body {
-            display: flex; justify-content: center; align-items: center; min-height: 100vh;
-            background: linear-gradient(45deg, #1cb5e0, #000851, #1cb5e0);
-            background-size: 400% 400%; animation: gradientBG 15s ease infinite; color: white; padding: 20px;
-        }
-        
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        /* --- গ্লাস কন্টেইনার --- */
-        .container {
-            position: relative; background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px;
-            width: 100%; max-width: 500px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            text-align: center; animation: fadeIn 1.5s ease-in-out;
-        }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* --- হেডার এবং ঘড়ি --- */
-        .header h1 { font-size: 2em; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .header h3 { font-weight: 300; color: #ffecd2; margin-bottom: 15px; }
-        .clock-box {
-            background: rgba(0, 0, 0, 0.3); padding: 8px 20px; border-radius: 50px; display: inline-block;
-            margin-bottom: 20px; font-size: 1.1em; font-weight: bold; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.2);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALIF'S UNIVERSE - তথ্য সংগ্রহ</title>
 
-        /* --- টেলিগ্রাম প্রোমো বক্স --- */
-        .telegram-promo {
-            background: rgba(0, 136, 204, 0.25); border: 1px solid rgba(0, 136, 204, 0.6);
-            padding: 15px; border-radius: 15px; margin-bottom: 20px; text-align: center;
-            box-shadow: 0 0 15px rgba(0, 136, 204, 0.3); animation: pulse-border 2s infinite;
-        }
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 136, 204, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
-        }
-        .telegram-promo h4 { color: #ffd700; font-size: 1.3em; margin-bottom: 5px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .telegram-promo p { font-size: 0.95em; margin-bottom: 12px; line-height: 1.4; }
-        .btn-telegram {
-            display: inline-block; background: #0088cc; color: white; padding: 10px 25px; border-radius: 50px;
-            text-decoration: none; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-        .btn-telegram:hover { background: #00aaff; transform: scale(1.05); }
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        /* --- আবশ্যিক ভিজিট সেকশন (Mandatory) --- */
-        .mandatory-box {
-            background: rgba(220, 53, 69, 0.2); border: 2px solid #dc3545;
-            padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left;
-        }
-        .mandatory-box h5 { color: #ff6b6b; font-size: 1.1em; margin-bottom: 8px; display: flex; align-items: center; }
-        .mandatory-box h5 i { margin-right: 8px; animation: blink 1s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
-        
-        .visit-link {
-            display: block; background: #dc3545; color: white; text-align: center; padding: 10px;
-            border-radius: 5px; text-decoration: none; margin: 10px 0; font-weight: bold;
-            transition: 0.3s;
-        }
-        .visit-link:hover { background: #ff4d4d; }
-        
-        .checkbox-container { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9em; margin-top: 10px; }
-        .checkbox-container input { width: 20px; height: 20px; margin-top: 2px; cursor: pointer; }
+<style>
+/* ===== GLOBAL FIX ===== */
+*{box-sizing:border-box}
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow-x:hidden;
+    font-family:'Hind Siliguri',sans-serif;
+    background:#000851;
+}
 
-        /* --- ফর্ম ইনপুট --- */
-        .form-group { margin-bottom: 15px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #e0e0e0; font-size: 0.9em; }
-        .form-group i { margin-right: 8px; }
-        input[type="text"], input[type="email"], input[type="number"], select, textarea {
-            width: 100%; padding: 10px 15px; border-radius: 8px; border: none; background: rgba(255, 255, 255, 0.2);
-            color: white; font-size: 1em; outline: none; transition: 0.3s;
-        }
-        ::placeholder { color: rgba(255, 255, 255, 0.7); }
-        input:focus, select:focus, textarea:focus { background: rgba(255, 255, 255, 0.3); box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-        select option { background: #000851; color: white; }
-        
-        .btn-submit {
-            width: 100%; padding: 12px; border: none; border-radius: 50px;
-            background: linear-gradient(90deg, #ff8a00, #e52e71); color: white; font-size: 1.2em; font-weight: bold;
-            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 5px;
-        }
-        .btn-submit:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(229, 46, 113, 0.4); }
+/* ===== PRELOADER ===== */
+#preloader{
+    position:fixed;
+    inset:0;
+    background:#05010d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:opacity .8s ease;
+}
 
-        /* --- স্মার্ট লিংক বোনাস বাটন --- */
-        .smart-link-btn {
-            display: block; width: 100%; margin-top: 20px; padding: 12px;
-            background: linear-gradient(45deg, #8e2de2, #4a00e0);
-            border-radius: 10px; color: white; text-decoration: none; font-weight: bold;
-            border: 2px dashed rgba(255,255,255,0.5); position: relative; overflow: hidden;
-            transition: 0.3s;
-        }
-        .smart-link-btn:hover { background: linear-gradient(45deg, #4a00e0, #8e2de2); transform: translateY(-3px); }
-        .smart-link-btn span { position: relative; z-index: 2; }
-        
-        /* --- বিজ্ঞাপন (ব্যানার) --- */
-        .ad-container { margin-top: 20px; display: flex; justify-content: center; }
-        .ad-container img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: transform 0.3s; }
-        .ad-container img:hover { transform: scale(1.02); }
+.scene{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    perspective:1200px;
+}
 
-        .footer { margin-top: 15px; font-size: 0.8em; opacity: 0.7; }
-        @media (max-width: 480px) { .container { padding: 15px; } .header h1 { font-size: 1.5em; } }
-    </style>
+.core{
+    width:220px;
+    height:220px;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:spin 4s linear infinite; /* গতি বাড়ানো হয়েছে */
+}
+
+.sphere{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,#00f6ff,#7f00ff 60%,#000);
+    box-shadow:0 0 40px #7f00ff,0 0 80px #00f6ff;
+}
+
+.ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:2px solid rgba(0,255,255,.3);
+}
+.ring:nth-child(2){transform:rotateX(60deg)}
+.ring:nth-child(3){transform:rotateY(60deg)}
+.ring:nth-child(4){transform:rotateZ(60deg)}
+
+.loader-title{
+    margin-top:30px;
+    color:#fff;
+    font-size:1.5rem;
+    text-align:center;
+    text-shadow:0 0 20px #7f00ff;
+    animation:glow 1.5s infinite alternate;
+}
+
+@keyframes spin{
+    from{transform:rotateX(0) rotateY(0)}
+    to{transform:rotateX(360deg) rotateY(360deg)}
+}
+@keyframes glow{
+    from{text-shadow:0 0 10px #00f6ff}
+    to{text-shadow:0 0 30px #7f00ff}
+}
+
+/* ===== MAIN CONTENT ===== */
+#main-content{
+    display:none;
+    opacity:0;
+    min-height:100dvh;
+    width:100%;
+    padding:20px 12px;
+    background:linear-gradient(45deg,#1cb5e0,#000851,#1cb5e0);
+    background-size:400% 400%;
+    animation:bg 15s infinite;
+    transition:opacity 1s ease;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.container{
+    max-width:420px;
+    width:100%;
+    margin:0 auto;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(15px);
+    color:#fff;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+.clock-box{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:50px;
+    background:rgba(0,0,0,.4);
+    font-size:.9em;
+    margin:10px 0;
+}
+
+.telegram-promo{
+    background:rgba(0,136,204,.3);
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+.btn-telegram{
+    display:inline-block;
+    background:#0088cc;
+    color:#fff;
+    padding:10px 18px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+/* ===== FORM ===== */
+.form-group{margin-bottom:12px;text-align:left}
+label{font-size:.85em;color:#ffecd2;display: block;margin-bottom: 4px;}
+input,select,textarea{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    outline: none;
+}
+
+.flex-row{
+    display:flex;
+    gap:10px;
+}
+.flex-row > div { flex: 1; }
+
+.mandatory-box{
+    background:rgba(220,53,69,.2);
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+    text-align:left;
+    border: 1px solid #dc3545;
+}
+
+.visit-link{
+    display:block;
+    background:#dc3545;
+    color:#fff;
+    padding:8px;
+    text-align:center;
+    border-radius:5px;
+    margin:8px 0;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+.btn-submit{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(90deg,#ff8a00,#e52e71);
+    color:#fff;
+    font-size:1.1em;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.smart-link-btn{
+    display:block;
+    margin-top:15px;
+    padding:12px;
+    background:linear-gradient(45deg,#8e2de2,#4a00e0);
+    border-radius:10px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    border: 1px dashed #fff;
+}
+
+.ad-container img{
+    max-width:100%;
+    height:auto;
+    margin-top:15px;
+    border-radius:10px;
+}
+
+.footer-text{
+    margin-top:15px;
+    font-size:.75em;
+    opacity:.6;
+}
+
+/* ===== SMALL SCREEN FIX ===== */
+@media(max-width:360px){
+    .flex-row{flex-direction:column}
+    .container{padding:15px}
+    .core{width:180px;height:180px}
+    .loader-title{font-size:1.2rem}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="header">
-            <h1 id="greetingText">স্বাগতম!</h1>
-            <h3>SHARIARE ALIF এর পক্ষ থেকে অভিনন্দন</h3>
-            <div class="clock-box">
-                <i class="far fa-clock"></i> <span id="digitalClock">00:00:00 AM</span>
-            </div>
+<div id="preloader">
+    <div class="scene">
+        <div class="core">
+            <div class="sphere"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
         </div>
+        <div class="loader-title">WELCOME TO ALIF'S UNIVERSE</div>
+    </div>
+</div>
 
-        <div class="telegram-promo">
-            <h4>💰 ঘরে বসে ইনকাম করতে চান? 💰</h4>
-            <p>প্রতিদিন সেরা সব <strong>ফ্রি অফার</strong> এবং নিশ্চিত <strong>ইনকাম করার টিপস</strong> পেতে আমাদের টেলিগ্রাম চ্যানেলে এখনই যুক্ত হোন।</p>
-            <a href="https://t.me/FreeOfferDailyBD" target="_blank" class="btn-telegram">
-                <i class="fab fa-telegram-plane"></i> ইনকাম করতে এখানে ক্লিক করুন
-            </a>
+<div id="main-content">
+<div class="container">
+
+<h1 id="greetingText" style="margin:0">স্বাগতম!</h1>
+<p style="margin:5px 0; font-weight:300">SHARIARE ALIF এর পক্ষ থেকে অভিনন্দন</p>
+
+<div class="clock-box">
+<i class="far fa-clock"></i> <span id="digitalClock"></span>
+</div>
+
+<div class="telegram-promo">
+<h4 style="margin:0 0 10px">💰 ঘরে বসে ইনকাম করতে চান?</h4>
+<a class="btn-telegram" href="https://t.me/FreeOfferDailyBD" target="_blank">চ্যানেলে জয়েন করুন</a>
+</div>
+
+<form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://smartonlineearningguide2026.blogspot.com">
+    <input type="hidden" name="_captcha" value="false">
+
+    <div class="form-group">
+        <label>আপনার নাম</label>
+        <input type="text" name="name" placeholder="পুরো নাম" required>
+    </div>
+
+    <div class="form-group">
+        <label>ইমেইল এড্রেস</label>
+        <input type="email" name="email" placeholder="example@gmail.com" required>
+    </div>
+
+    <div class="form-group flex-row">
+        <div>
+            <label>বয়স</label>
+            <input type="number" name="age" required>
         </div>
-
-        <form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
-            
-            <input type="hidden" name="_subject" value="New Website Idea Submission!">
-            <input type="hidden" name="_captcha" value="false">
-            
-            <input type="hidden" name="_next" value="https://smartonlineearningguide2026.blogspot.com">
-            
-            <div class="form-group">
-                <label><i class="fas fa-user"></i> আপনার নাম</label>
-                <input type="text" name="name" placeholder="আপনার পুরো নাম লিখুন" required>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fas fa-envelope"></i> ইমেইল এড্রেস</label>
-                <input type="email" name="email" placeholder="example@gmail.com" required>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fas fa-calendar-alt"></i> বয়স</label>
-                <input type="number" name="age" placeholder="আপনার বয়স কত?" required>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fas fa-venus-mars"></i> লিঙ্গ</label>
-                <select name="gender" required>
-                    <option value="" disabled selected>নির্বাচন করুন</option>
-                    <option value="Male">পুরুষ</option>
-                    <option value="Female">মহিলা</option>
-                    <option value="Other">অন্যান্য</option>
-                </select>
-            </div>
-
-            <div class="mandatory-box">
-                <h5><i class="fas fa-exclamation-circle"></i> আবশ্যিক ধাপ:</h5>
-                <p style="font-size: 0.9em;">ফর্ম সাবমিট করার আগে আপনাকে অবশ্যই নিচের আর্টিকেলে ভিজিট করতে হবে।</p>
-                
-                <a href="https://smartonlineearningguide2026.blogspot.com/2026/01/what-is-online-earning-and-how.html?m=1" target="_blank" class="visit-link">
-                    <i class="fas fa-external-link-alt"></i> এখানে ক্লিক করে আর্টিকেলটি পড়ুন
-                </a>
-
-                <div class="checkbox-container">
-                    <input type="checkbox" name="visited_article" required>
-                    <label>আমি উপরের লিংকে ক্লিক করেছি এবং আর্টিকেলটি পড়েছি। (এটি পূরণ করা বাধ্যতামূলক)</label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fas fa-lightbulb"></i> আপনার মতামত</label>
-                <textarea name="message" rows="3" placeholder="কেমন ওয়েবসাইট চান? বিস্তারিত..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit">তথ্য জমা দিন <i class="fas fa-paper-plane"></i></button>
-        </form>
-
-        <a href="https://smartonlineearningguide2026.blogspot.com" target="_blank" class="smart-link-btn">
-            <span>🎁 আরও ইনকাম টিপস পেতে ক্লিক করুন 🎁</span>
-        </a>
-
-        <div class="ad-container">
-            <a href="https://shrinkme.io/ref/shararealif" target="_blank">
-                <img src="https://shrinkme.io/banners/ref/336x280.png" title="Make short links and earn the biggest money" alt="Earn Money Banner" />
-            </a>
-        </div>
-
-        <div class="footer">
-            &copy; 2026 SHARIARE ALIF | ALL RIGHTS RESERVED.
+        <div>
+            <label>লিঙ্গ</label>
+            <select name="gender" required>
+                <option value="Male">পুরুষ</option>
+                <option value="Female">মহিলা</option>
+                <option value="Other">অন্যান্য</option>
+            </select>
         </div>
     </div>
 
-    <script>
-        function updateClockAndGreeting() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            let ampm = hours >= 12 ? 'PM' : 'AM';
-            
-            const greetingElement = document.getElementById('greetingText');
-            let greetingMsg = "স্বাগতম";
+    <div class="mandatory-box">
+        <p style="font-size: 0.85em; margin: 0; color: #ff6b6b;"><strong>আবশ্যিক ধাপ:</strong> নিচের আর্টিকেলে ভিজিট করুন।</p>
+        <a href="https://smartonlineearningguide2026.blogspot.com/2026/01/what-is-online-earning-and-how.html?m=1" target="_blank" class="visit-link">
+            আর্টিকেলটি পড়ুন
+        </a>
+        <label style="font-size: 0.75em; display: flex; align-items: center; gap: 5px;">
+            <input type="checkbox" required style="width: auto;"> আমি আর্টিকেলটি পড়েছি।
+        </label>
+    </div>
 
-            if (hours >= 5 && hours < 12) greetingMsg = "শুভ সকাল!";
-            else if (hours >= 12 && hours < 17) greetingMsg = "শুভ দুপুর!";
-            else if (hours >= 17 && hours < 20) greetingMsg = "শুভ বিকাল!";
-            else greetingMsg = "শুভ রাত্রি!";
-            
-            greetingElement.innerText = greetingMsg;
-            hours = hours % 12; hours = hours ? hours : 12; 
-            document.getElementById('digitalClock').innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
-        }
-        setInterval(updateClockAndGreeting, 1000);
-        updateClockAndGreeting();
-    </script>
+    <div class="form-group">
+        <label>আপনার মতামত</label>
+        <textarea name="message" rows="2" placeholder="কিছু লিখুন..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">তথ্য জমা দিন</button>
+</form>
+
+<a class="smart-link-btn" href="https://smartonlineearningguide2026.blogspot.com" target="_blank">
+    🎁 আরও ইনকাম টিপস পেতে ক্লিক করুন 🎁
+</a>
+
+<div class="ad-container">
+    <a href="https://shrinkme.io/ref/shararealif" target="_blank">
+        <img src="https://shrinkme.io/banners/ref/336x280.png" title="Make short links and earn the biggest money" />
+    </a>
+</div>
+
+<p class="footer-text">© ২০২৬ SHARIARE ALIF</p>
+
+</div>
+</div>
+
+<script>
+window.addEventListener('load',()=>{
+    // লোডিং টাইম ৪ সেকেন্ড (৪০০০ মিলি-সেকেন্ড) করা হয়েছে
+    setTimeout(()=>{
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity=0;
+        setTimeout(()=>{
+            preloader.style.display='none';
+            const main=document.getElementById('main-content');
+            main.style.display='block';
+            setTimeout(()=>main.style.opacity=1,50);
+        },800);
+    },4000); 
+});
+
+function updateClock(){
+    const d=new Date();
+    let h=d.getHours(),m=d.getMinutes(),s=d.getSeconds();
+    
+    // গ্রিটিং আপডেট
+    const greet = document.getElementById('greetingText');
+    if (h >= 5 && h < 12) greet.innerText = "শুভ সকাল!";
+    else if (h >= 12 && h < 17) greet.innerText = "শুভ দুপুর!";
+    else if (h >= 17 && h < 20) greet.innerText = "শুভ বিকাল!";
+    else greet.innerText = "শুভ রাত্রি!";
+
+    let am=h>=12?'PM':'AM';
+    h=h%12||12;
+    document.getElementById('digitalClock').innerText=
+    `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} ${am}`;
+}
+setInterval(updateClock,1000);
+updateClock();
+</script>
 
 </body>
 </html>
