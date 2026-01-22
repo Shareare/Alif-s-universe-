@@ -1,387 +1,263 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALIF'S UNIVERSE - তথ্য সংগ্রহ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alif's Universes - AI Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --secondary: #00ffa3;
+      --bg: #080808;
+      --card-bg: #151515;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    * { box-sizing: border-box; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
-<style>
-/* ===== GLOBAL FIX ===== */
-*{box-sizing:border-box}
-html,body{
-    width:100%;
-    height:100%;
-    margin:0;
-    overflow-x:hidden;
-    font-family:'Hind Siliguri',sans-serif;
-    background:#000851;
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: white;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
 
-/* ===== PRELOADER ===== */
-#preloader{
-    position:fixed;
-    inset:0;
-    background:#05010d;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    transition:opacity .8s ease;
-}
+    .header {
+      padding: 80px 20px;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #080808 100%);
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
 
-.scene{
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    perspective:1200px;
-}
+    .brand-name {
+      font-size: 14px;
+      letter-spacing: 5px;
+      color: var(--secondary);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
-.core{
-    width:220px;
-    height:220px;
-    position:relative;
-    transform-style:preserve-3d;
-    animation:spin 4s linear infinite;
-}
+    .main-title {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 700;
+      margin: 0;
+      background: linear-gradient(to right, #fff, #888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.sphere{
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-    background:radial-gradient(circle at 30% 30%,#00f6ff,#7f00ff 60%,#000);
-    box-shadow:0 0 40px #7f00ff,0 0 80px #00f6ff;
-}
+    .filter-container {
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-.ring{
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-    border:2px solid rgba(0,255,255,.3);
-}
-.ring:nth-child(2){transform:rotateX(60deg)}
-.ring:nth-child(3){transform:rotateY(60deg)}
-.ring:nth-child(4){transform:rotateZ(60deg)}
+    .filter-btn {
+      background: #111;
+      border: 1px solid #333;
+      color: #888;
+      padding: 10px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-.loader-title{
-    margin-top:30px;
-    color:#fff;
-    font-size:1.5rem;
-    text-align:center;
-    text-shadow:0 0 20px #7f00ff;
-    animation:glow 1.5s infinite alternate;
-}
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #000;
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
 
-@keyframes spin{
-    from{transform:rotateX(0) rotateY(0)}
-    to{transform:rotateX(360deg) rotateY(360deg)}
-}
-@keyframes glow{
-    from{text-shadow:0 0 10px #00f6ff}
-    to{text-shadow:0 0 30px #7f00ff}
-}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
-/* ===== MAIN CONTENT ===== */
-#main-content{
-    display:none;
-    opacity:0;
-    min-height:100dvh;
-    width:100%;
-    padding:20px 12px;
-    background:linear-gradient(45deg,#1cb5e0,#000851,#1cb5e0);
-    background-size:400% 400%;
-    animation:bg 15s infinite;
-    transition:opacity 1s ease;
-}
+    .card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #222;
+      display: none;
+    }
 
-@keyframes bg{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
+    .card.show { display: block; animation: fadeIn 0.6s ease forwards; }
 
-.container{
-    max-width:420px;
-    width:100%;
-    margin:0 auto;
-    padding:20px;
-    border-radius:20px;
-    background:rgba(255,255,255,.1);
-    backdrop-filter:blur(15px);
-    color:#fff;
-    text-align:center;
-    box-shadow:0 15px 35px rgba(0,0,0,.4);
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.clock-box{
-    display:inline-block;
-    padding:8px 15px;
-    border-radius:50px;
-    background:rgba(0,0,0,.4);
-    font-size:.9em;
-    margin:10px 0;
-}
+    .img-box { width: 100%; height: 350px; overflow: hidden; cursor: zoom-in; background: #111; }
+    .img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .card:hover .img-box img { transform: scale(1.08); }
 
-/* ===== YOUTUBE VIDEO STYLING ===== */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background: #000;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+    .card-content { padding: 20px; }
 
-.telegram-promo{
-    background:rgba(0,136,204,.3);
-    padding:15px;
-    border-radius:15px;
-    margin-bottom:20px;
-}
-.btn-telegram{
-    display:inline-block;
-    background:#0088cc;
-    color:#fff;
-    padding:10px 18px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight: bold;
-}
+    .copy-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 15px;
+      border: none;
+      background: #1d1d1d;
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-/* ===== FORM ===== */
-.form-group{margin-bottom:12px;text-align:left}
-label{font-size:.85em;color:#ffecd2;display: block;margin-bottom: 4px;}
-input,select,textarea{
-    width:100%;
-    padding:10px;
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,.2);
-    background:rgba(255,255,255,.1);
-    color:#fff;
-    outline: none;
-}
+    .feedback-section {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 40px 20px;
+      background: #111;
+      border-radius: 30px;
+      text-align: center;
+      border: 1px solid #222;
+    }
 
-.flex-row{
-    display:flex;
-    gap:10px;
-}
-.flex-row > div { flex: 1; }
+    input, textarea {
+      width: 100%; padding: 15px; margin-top: 15px;
+      background: #080808; border: 1px solid #333;
+      border-radius: 12px; color: white; font-family: inherit;
+    }
 
-.mandatory-box{
-    background:rgba(220,53,69,.2);
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:15px;
-    text-align:left;
-    border: 1px solid #dc3545;
-}
+    .submit-btn {
+      margin-top: 20px; width: 100%; padding: 15px;
+      background: var(--secondary); color: black;
+      border: none; border-radius: 12px; font-weight: 700; cursor: pointer;
+    }
 
-.visit-link{
-    display:block;
-    background:#dc3545;
-    color:#fff;
-    padding:8px;
-    text-align:center;
-    border-radius:5px;
-    margin:8px 0;
-    text-decoration:none;
-    font-weight: bold;
-}
+    footer { padding: 60px 20px; text-align: center; border-top: 1px solid #222; background: #050505; }
+    .social-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; }
+    .social-icon { font-size: 24px; color: white; transition: 0.3s; }
+    .social-icon:hover { color: var(--primary); transform: translateY(-5px); }
+    .contact-mail { color: #888; text-decoration: none; font-size: 14px; }
+    .copyright { margin-top: 20px; color: #555; font-size: 13px; }
 
-.btn-submit{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(90deg,#ff8a00,#e52e71);
-    color:#fff;
-    font-size:1.1em;
-    cursor:pointer;
-    font-weight: bold;
-}
+    .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
+    .modal img { max-width: 95%; max-height: 90vh; border-radius: 10px; }
+    
+    #toast { visibility: hidden; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: black; padding: 12px 30px; border-radius: 50px; font-weight: bold; z-index: 3000; }
+    #toast.show { visibility: visible; animation: slideUp 0.4s; }
 
-.smart-link-btn{
-    display:block;
-    margin-top:15px;
-    padding:12px;
-    background:linear-gradient(45deg,#8e2de2,#4a00e0);
-    border-radius:10px;
-    text-decoration:none;
-    color:#fff;
-    font-weight:bold;
-    border: 1px dashed #fff;
-}
-
-.ad-container img{
-    max-width:100%;
-    height:auto;
-    margin-top:15px;
-    border-radius:10px;
-}
-
-.footer-text{
-    margin-top:15px;
-    font-size:.75em;
-    opacity:.6;
-}
-
-/* ===== SMALL SCREEN FIX ===== */
-@media(max-width:360px){
-    .flex-row{flex-direction:column}
-    .container{padding:15px}
-    .core{width:180px;height:180px}
-    .loader-title{font-size:1.2rem}
-}
-</style>
+    @keyframes slideUp { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+  </style>
 </head>
-
 <body>
 
-<div id="preloader">
-    <div class="scene">
-        <div class="core">
-            <div class="sphere"></div>
-            <div class="ring"></div>
-            <div class="ring"></div>
-            <div class="ring"></div>
-        </div>
-        <div class="loader-title">WELCOME TO ALIF'S UNIVERSE</div>
-    </div>
-</div>
-
-<div id="main-content">
-<div class="container">
-
-<h1 id="greetingText" style="margin:0">স্বাগতম!</h1>
-<p style="margin:5px 0; font-weight:300">SHARIARE ALIF এর পক্ষ থেকে অভিনন্দন</p>
-
-<div class="clock-box">
-<i class="far fa-clock"></i> <span id="digitalClock"></span>
-</div>
-
-<div class="telegram-promo">
-<h4 style="margin:0 0 10px">💰 ঘরে বসে ইনকাম করতে চান?</h4>
-<a class="btn-telegram" href="https://t.me/FreeOfferDailyBD" target="_blank">চ্যানেলে জয়েন করুন</a>
-</div>
-
-<div class="video-container">
-    <iframe src="https://www.youtube.com/embed/GgcyhTiQhlg" 
-    title="YouTube video player" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen></iframe>
-</div>
-
-<form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
-    <input type="hidden" name="_next" value="https://smartonlineearningguide2026.blogspot.com">
-    <input type="hidden" name="_captcha" value="false">
-
-    <div class="form-group">
-        <label>আপনার নাম</label>
-        <input type="text" name="name" placeholder="পুরো নাম" required>
-    </div>
-
-    <div class="form-group">
-        <label>イমেইল এড্রেস</label>
-        <input type="email" name="email" placeholder="example@gmail.com" required>
-    </div>
-
-    <div class="form-group flex-row">
-        <div>
-            <label>বয়স</label>
-            <input type="number" name="age" required>
-        </div>
-        <div>
-            <label>লিঙ্গ</label>
-            <select name="gender" required>
-                <option value="Male">পুরুষ</option>
-                <option value="Female">মহিলা</option>
-                <option value="Other">অন্যান্য</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="mandatory-box">
-        <p style="font-size: 0.85em; margin: 0; color: #ff6b6b;"><strong>আবশ্যিক ধাপ:</strong> নিচের আর্টিকেলে ভিজিট করুন।</p>
-        <a href="https://smartonlineearningguide2026.blogspot.com/2026/01/what-is-online-earning-and-how.html?m=1" target="_blank" class="visit-link">
-            আর্টিকেলটি পড়ুন
-        </a>
-        <label style="font-size: 0.75em; display: flex; align-items: center; gap: 5px;">
-            <input type="checkbox" required style="width: auto;"> আমি আর্টিকেলটি পড়েছি।
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label>আপনার মতামত</label>
-        <textarea name="message" rows="2" placeholder="কিছু লিখুন..." required></textarea>
-    </div>
-
-    <button type="submit" class="btn-submit">তথ্য জমা দিন</button>
-</form>
-
-<a class="smart-link-btn" href="https://smartonlineearningguide2026.blogspot.com" target="_blank">
-    🎁 আরও ইনকাম টিপস পেতে ক্লিক করুন 🎁
-</a>
-
-<div class="ad-container">
-    <a href="https://shrinkme.io/ref/shararealif" target="_blank">
-        <img src="https://shrinkme.io/banners/ref/336x280.png" title="Make short links and earn the biggest money" />
-    </a>
-</div>
-
-<p class="footer-text">© ২০২৬ SHARIARE ALIF</p>
-
-</div>
-</div>
-
-<script>
-window.addEventListener('load',()=>{
-    // ৪ সেকেন্ড লোডিং টাইম
-    setTimeout(()=>{
-        const preloader = document.getElementById('preloader');
-        preloader.style.opacity=0;
-        setTimeout(()=>{
-            preloader.style.display='none';
-            const main=document.getElementById('main-content');
-            main.style.display='block';
-            setTimeout(()=>main.style.opacity=1,50);
-        },800);
-    },4000); 
-});
-
-function updateClock(){
-    const d=new Date();
-    let h=d.getHours(),m=d.getMinutes(),s=d.getSeconds();
+  <header class="header">
+    <div class="brand-name">Alif's Universes</div>
+    <h1 class="main-title">AI Prompt Studio</h1>
     
-    const greet = document.getElementById('greetingText');
-    if (h >= 5 && h < 12) greet.innerText = "শুভ সকাল!";
-    else if (h >= 12 && h < 17) greet.innerText = "শুভ দুপুর!";
-    else if (h >= 17 && h < 20) greet.innerText = "শুভ বিকাল!";
-    else greet.innerText = "শুভ রাত্রি!";
+    <div class="filter-container">
+      <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+      <button class="filter-btn" onclick="filterGallery('car')">Cars</button>
+      <button class="filter-btn" onclick="filterGallery('portrait')">Portrait</button>
+      <button class="filter-btn" onclick="filterGallery('urban')">Urban</button>
+    </div>
+  </header>
 
-    let am=h>=12?'PM':'AM';
-    h=h%12||12;
-    document.getElementById('digitalClock').innerText=
-    `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')} ${am}`;
-}
-setInterval(updateClock,1000);
-updateClock();
-</script>
+  <div class="gallery" id="gallery">
+    
+    <div class="card show car urban">
+      <div class="img-box" onclick="openModal(this)">
+        <img src="https://i.ibb.co.com/kg3LZ5NT/1769070860756.jpg">
+      </div>
+      <div class="card-content">
+        <button class="copy-btn" onclick="copyPrompt(this, 'A cinematic nighttime street portrait of a young man sitting on an empty asphalt road, leaning casually against the rear of a black Ford Mustang...')">Copy Prompt</button>
+      </div>
+    </div>
+    
+    <div class="card show portrait">
+      <div class="img-box" onclick="openModal(this)">
+        <img src="https://i.ibb.co.com/ynvvty33/1768724848455.jpg">
+      </div>
+      <div class="card-content">
+        <button class="copy-btn" onclick="copyPrompt(this, 'A hyper-realistic, 8k, cinematic full-body shot of a person seated on a minimalist yellow chair in a bright yellow environment...')">Copy Prompt</button>
+      </div>
+    </div>
 
+    <div class="card show car portrait">
+      <div class="img-box" onclick="openModal(this)">
+        <img src="https://i.ibb.co.com/rRJFV8LK/file-0000000097b071fa90c48cdd644b5fbf.png">
+      </div>
+      <div class="card-content">
+        <button class="copy-btn" onclick="copyPrompt(this, 'Keeping my original face. A cinematic, ultra-realistic full-body portrait of a fashionable young man standing confidently in front of a Mercedes G-Wagon...')">Copy Prompt</button>
+      </div>
+    </div>
+
+    <div class="card show car urban">
+      <div class="img-box" onclick="openModal(this)">
+        <img src="https://i.ibb.co.com/rR6mdD2b/file-000000003c8071fa919e541e68931453.png">
+      </div>
+      <div class="card-content">
+        <button class="copy-btn" onclick="copyPrompt(this, 'Keeping my original face. Urban night street photography with a blue Nissan Skyline GT-R R34 under neon lights...')">Copy Prompt</button>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="feedback-section">
+    <h2>Send Feedback</h2>
+    <p>আপনার মতামত আমাদের জানান</p>
+    <form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <textarea name="message" rows="4" placeholder="Write your feedback here..." required></textarea>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://www.facebook.com/share/175ziz2xSB/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+      <a href="mailto:sharearealif7@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+    </div>
+    <a href="mailto:sharearealif7@gmail.com" class="contact-mail">sharearealif7@gmail.com</a>
+    <p class="copyright">&copy; 2024-2026 Alif's Universes. All Rights Reserved.</p>
+  </footer>
+
+  <div id="imageModal" class="modal" onclick="this.style.display='none'"><img id="modalImg"></div>
+  <div id="toast">✅ Prompt Copied!</div>
+
+  <script>
+    function copyPrompt(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("toast");
+        toast.className = "show";
+        const old = btn.innerText;
+        btn.innerText = "COPIED!";
+        btn.style.background = "var(--secondary)"; btn.style.color = "#000";
+        setTimeout(() => { 
+          toast.className = ""; btn.innerText = old; 
+          btn.style.background = "#1d1d1d"; btn.style.color = "var(--primary)";
+        }, 2000);
+      });
+    }
+
+    function openModal(div) {
+      document.getElementById("imageModal").style.display = "flex";
+      document.getElementById("modalImg").src = div.querySelector('img').src;
+    }
+
+    function filterGallery(category) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.card').forEach(c => {
+        c.classList.toggle('show', category === 'all' || c.classList.contains(category));
+      });
+    }
+  </script>
 </body>
 </html>
