@@ -210,14 +210,19 @@
   </div>
 
   <section class="feedback-section">
-    <h2>Send Feedback</h2>
-    <p>আপনার মতামত আমাদের জানান</p>
-    <form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <textarea name="message" rows="4" placeholder="Write your feedback here..." required></textarea>
-      <button type="submit" class="submit-btn">Send Message</button>
-    </form>
-  </section>
+  <h2>Send Feedback</h2>
+  <p>আপনার মতামত আমাদের জানান</p>
+  
+  <form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
+    <input type="hidden" name="_next" value="https://shareare.github.io/Alif-s-universe-/">
+    
+    <input type="hidden" name="_captcha" value="false">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+    <textarea name="message" rows="4" placeholder="Write your feedback here..." required></textarea>
+    <button type="submit" class="submit-btn">Send Message</button>
+  </form>
+</section>
 
   <footer>
     <div class="social-links">
