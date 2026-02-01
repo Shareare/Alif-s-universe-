@@ -7,45 +7,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* মূল স্টাইল */
         body { 
             margin: 0; overflow: hidden; font-family: 'Hind Siliguri', sans-serif; 
             background-color: #ffffff; touch-action: manipulation; user-select: none;
         }
-        #game-container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
+
+        #game-container { 
+            position: relative; width: 100vw; height: 100vh; 
+            display: flex; justify-content: center; align-items: center; 
+        }
         
         /* ক্যারেক্টার */
         #character { 
-            width: 280px; height: 380px; background-size: contain; background-repeat: no-repeat; 
-            background-position: center; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 5;
+            width: 280px; height: 380px; 
+            background-size: contain; background-repeat: no-repeat; 
+            background-position: center; 
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            z-index: 5;
         }
         
+        /* মশা */
         .mosquito { 
             position: absolute; width: 70px; height: 70px; cursor: pointer; z-index: 10;
             filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); pointer-events: auto;
         }
 
-        /* UI এবং ক্রেডিট সেকশন */
+        /* স্ট্যাটাস বার */
         #ui-bar {
             position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-            width: 95%; max-width: 600px; display: flex; justify-content: space-between; align-items: center; z-index: 100; pointer-events: none;
+            width: 95%; max-width: 600px; display: flex; 
+            justify-content: space-between; align-items: center; z-index: 100; pointer-events: none;
         }
         .stat-box {
-            background: white; padding: 8px 15px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: white; padding: 8px 15px; border-radius: 50px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex; align-items: center; gap: 8px; font-weight: 700; color: #333; border: 1px solid #eee;
         }
         .anger-container { width: 120px; height: 15px; background: #e0e0e0; border-radius: 10px; overflow: hidden; }
         #anger-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #ff9a9e 0%, #ff0000 100%); transition: width 0.3s ease; }
 
-        /* ডেভেলপার ক্রেডিট (স্থায়ীভাবে থাকবে) */
+        /* ডেভেলপার ক্রেডিট (মোবাইলের জন্য উপরে সেট করা হয়েছে) */
         #developer-credit {
-            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            position: absolute; bottom: 100px; /* নিচ থেকে ১০০ পিক্সেল উপরে */
+            left: 50%; transform: translateX(-50%);
             z-index: 150; display: flex; flex-direction: column; align-items: center; gap: 5px;
-            background: rgba(255, 255, 255, 0.8); padding: 10px 20px; border-radius: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
+            background: rgba(255, 255, 255, 0.9); padding: 10px 20px; border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #f0f0f0;
         }
-        .dev-name { font-size: 14px; font-weight: bold; color: #555; letter-spacing: 1px; }
+        .dev-name { font-size: 12px; font-weight: bold; color: #555; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
         .fb-link { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
-        .fb-link:hover { transform: scale(1.1); }
         .fb-icon { width: 35px; height: 35px; }
 
         /* ওভারলে স্ক্রিন */
@@ -54,9 +65,11 @@
             background: rgba(255, 255, 255, 0.98); display: flex; flex-direction: column;
             justify-content: center; align-items: center; z-index: 200; text-align: center; cursor: pointer;
         }
+        .rule-box { padding: 15px; text-align: left; color: #555; font-size: 14px; }
         .pulse-text { margin-top: 20px; font-size: 1.2rem; font-weight: bold; color: #2e7d32; animation: pulse 1.5s infinite; padding: 10px 20px; border: 2px dashed; border-radius: 10px; }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        .splat { position: absolute; width: 60px; height: 60px; background: rgba(255,0,0,0.5); border-radius: 50%; transform: scale(0); animation: splatAnim 0.3s forwards; pointer-events: none; z-index: 9; }
+        
+        .splat { position: absolute; width: 60px; height: 60px; background: rgba(255,0,0,0.4); border-radius: 50%; transform: scale(0); animation: splatAnim 0.3s forwards; pointer-events: none; z-index: 9; }
         @keyframes splatAnim { to { transform: scale(1.5); opacity: 0; } }
     </style>
 </head>
@@ -82,15 +95,14 @@
 
     <div id="overlay-screen" onclick="handleStart()">
         <div id="screen-content">
-            <h1 style="color: #d32f2f; margin: 0;">জননেতাকে কুপোকাত করুন </h1>
-            <p style="color: #666;">তৈরি করেছেন: <b>SHARIARE ALIF</b></p>
-            <div class="pulse-text">শুরু করতে এখানে ট্যাপ করুন
-            নিয়মগুলো নিচে দেওয়া হলো:</br>
-১. স্ক্রিনে মশা দেখা গেলেই তার ওপর দ্রুত ট্যাপ করে মেরে ফেলুন।</br>
-২. মশা কামড় দিলে মানুষটি রেগে যাবে, তাই ৩০ সেকেন্ডের বেশি তাকে কামড়াতে দেবেন না।</br>
-৩. গেমটি ২ মিনিট স্থায়ী হবে, এই সময়ের মধ্যে রাগ মিটার পূর্ণ হতে না দিলে আপনি জিতে যাবেন।
-            
+            <h1 style="color: #d32f2f; margin: 0;">মশা তাড়াও গেম</h1>
+            <div class="rule-box">
+                ১. মশা দেখলেই ট্যাপ করে মেরে ফেলুন।<br>
+                ২. ৩০ সেকেন্ডের বেশি কামড় খেতে দেবেন না।<br>
+                ৩. ২ মিনিট টিকে থাকলে আপনিই বিজয়ী!
             </div>
+            <p style="color: #666; font-size: 13px;">তৈরি করেছেন: <b>SHARIARE ALIF</b></p>
+            <div class="pulse-text">শুরু করতে ট্যাপ করুন</div>
         </div>
     </div>
 </div>
@@ -131,21 +143,18 @@
     }
 
     function startLoops() {
-        // মেইন টাইমার
         const timerId = setInterval(() => {
             if (isGameOver) { clearInterval(timerId); return; }
             gameTime--;
             timerDisplay.innerText = gameTime;
 
-            // সময়ের সাথে মশা বাড়ান (Difficulty)
-            if (gameTime % 15 === 0 && spawnInterval > 500) {
-                spawnInterval -= 200;
+            if (gameTime % 10 === 0 && spawnInterval > 400) {
+                spawnInterval -= 150;
                 resetSpawner();
             }
             if (gameTime <= 0) endGame(true);
         }, 1000);
 
-        // রাগের মিটার
         setInterval(() => {
             if (isGameOver) return;
             if (activeMosquitoes > 0) {
@@ -230,7 +239,7 @@
         overlayScreen.style.display = 'flex';
         overlayScreen.innerHTML = `
             <h1 style="color: ${win ? '#2e7d32' : '#d32f2f'}">${win ? "বিজয়!" : "গেম ওভার!"}</h1>
-            <p>${win ? "আপনি সফলভাবে বেঁচে ফিরেছেন!" : "বেশি কামড়ে জননেতা কুপোকাত হয়েছে!"}</p>
+            <p>${win ? "আপনি মশা তাড়িয়ে জিতে গেছেন!" : "জনতা কুপোকাত!"}</p>
             <div class="pulse-text">আবার খেলুন</div>
         `;
     }
