@@ -1,268 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alif's Universes - AI Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <style>
-    :root {
-      --primary: #00d4ff;
-      --secondary: #00ffa3;
-      --bg: #080808;
-      --card-bg: #151515;
-    }
-
-    * { box-sizing: border-box; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg);
-      color: white;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
-
-    .header {
-      padding: 80px 20px;
-      background: radial-gradient(circle at center, #1a1a1a 0%, #080808 100%);
-      text-align: center;
-      border-bottom: 1px solid #222;
-    }
-
-    .brand-name {
-      font-size: 14px;
-      letter-spacing: 5px;
-      color: var(--secondary);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .main-title {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      font-weight: 700;
-      margin: 0;
-      background: linear-gradient(to right, #fff, #888);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .filter-container {
-      margin: 30px 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: #111;
-      border: 1px solid #333;
-      color: #888;
-      padding: 10px 25px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--primary);
-      color: #000;
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid #222;
-      display: none;
-    }
-
-    .card.show { display: block; animation: fadeIn 0.6s ease forwards; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .img-box { width: 100%; height: 350px; overflow: hidden; cursor: zoom-in; background: #111; }
-    .img-box img { width: 100%; height: 100%; object-fit: cover; }
-    .card:hover .img-box img { transform: scale(1.08); }
-
-    .card-content { padding: 20px; }
-
-    .copy-btn {
-      width: 100%;
-      padding: 14px;
-      border-radius: 15px;
-      border: none;
-      background: #1d1d1d;
-      color: var(--primary);
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .feedback-section {
-      max-width: 600px;
-      margin: 100px auto;
-      padding: 40px 20px;
-      background: #111;
-      border-radius: 30px;
-      text-align: center;
-      border: 1px solid #222;
-    }
-
-    input, textarea {
-      width: 100%; padding: 15px; margin-top: 15px;
-      background: #080808; border: 1px solid #333;
-      border-radius: 12px; color: white; font-family: inherit;
-    }
-
-    .submit-btn {
-      margin-top: 20px; width: 100%; padding: 15px;
-      background: var(--secondary); color: black;
-      border: none; border-radius: 12px; font-weight: 700; cursor: pointer;
-    }
-
-    footer { padding: 60px 20px; text-align: center; border-top: 1px solid #222; background: #050505; }
-    .social-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; }
-    .social-icon { font-size: 24px; color: white; transition: 0.3s; }
-    .social-icon:hover { color: var(--primary); transform: translateY(-5px); }
-    .contact-mail { color: #888; text-decoration: none; font-size: 14px; }
-    .copyright { margin-top: 20px; color: #555; font-size: 13px; }
-
-    .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
-    .modal img { max-width: 95%; max-height: 90vh; border-radius: 10px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SHARIARE ALIF - মশা তাড়াও গেম</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     
-    #toast { visibility: hidden; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: black; padding: 12px 30px; border-radius: 50px; font-weight: bold; z-index: 3000; }
-    #toast.show { visibility: visible; animation: slideUp 0.4s; }
+    <style>
+        body { 
+            margin: 0; overflow: hidden; font-family: 'Hind Siliguri', sans-serif; 
+            background-color: #ffffff; touch-action: manipulation; user-select: none;
+        }
+        #game-container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        
+        /* ক্যারেক্টার */
+        #character { 
+            width: 280px; height: 380px; background-size: contain; background-repeat: no-repeat; 
+            background-position: center; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 5;
+        }
+        
+        .mosquito { 
+            position: absolute; width: 70px; height: 70px; cursor: pointer; z-index: 10;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); pointer-events: auto;
+        }
 
-    @keyframes slideUp { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
-  </style>
+        /* UI এবং ক্রেডিট সেকশন */
+        #ui-bar {
+            position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 600px; display: flex; justify-content: space-between; align-items: center; z-index: 100; pointer-events: none;
+        }
+        .stat-box {
+            background: white; padding: 8px 15px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex; align-items: center; gap: 8px; font-weight: 700; color: #333; border: 1px solid #eee;
+        }
+        .anger-container { width: 120px; height: 15px; background: #e0e0e0; border-radius: 10px; overflow: hidden; }
+        #anger-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #ff9a9e 0%, #ff0000 100%); transition: width 0.3s ease; }
+
+        /* ডেভেলপার ক্রেডিট (স্থায়ীভাবে থাকবে) */
+        #developer-credit {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 150; display: flex; flex-direction: column; align-items: center; gap: 5px;
+            background: rgba(255, 255, 255, 0.8); padding: 10px 20px; border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
+        }
+        .dev-name { font-size: 14px; font-weight: bold; color: #555; letter-spacing: 1px; }
+        .fb-link { display: flex; align-items: center; text-decoration: none; transition: transform 0.2s; }
+        .fb-link:hover { transform: scale(1.1); }
+        .fb-icon { width: 35px; height: 35px; }
+
+        /* ওভারলে স্ক্রিন */
+        #overlay-screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98); display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 200; text-align: center; cursor: pointer;
+        }
+        .pulse-text { margin-top: 20px; font-size: 1.2rem; font-weight: bold; color: #2e7d32; animation: pulse 1.5s infinite; padding: 10px 20px; border: 2px dashed; border-radius: 10px; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .splat { position: absolute; width: 60px; height: 60px; background: rgba(255,0,0,0.5); border-radius: 50%; transform: scale(0); animation: splatAnim 0.3s forwards; pointer-events: none; z-index: 9; }
+        @keyframes splatAnim { to { transform: scale(1.5); opacity: 0; } }
+    </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="brand-name">Alif's Universes Presents</div>
-    <h1 class="main-title">AI Prompt Studio</h1>
-    
-    <div class="filter-container">
-      <button class="filter-btn active" onclick="filterGallery('all')">All</button>
-      <button class="filter-btn" onclick="filterGallery('car')">Cars</button>
-      <button class="filter-btn" onclick="filterGallery('portrait')">Portrait</button>
-      <button class="filter-btn" onclick="filterGallery('urban')">Urban</button>
-    </div>
-  </header>
-
-  <div class="gallery" id="gallery">
-    
-    <div class="card show car urban">
-      <div class="img-box" onclick="openModal(this)">
-        <img src="https://i.ibb.co.com/kg3LZ5NT/1769070860756.jpg">
-      </div>
-      <div class="card-content">
-        <button class="copy-btn" onclick="copyPrompt(this, 'A cinematic nighttime street portrait of a young man sitting on an empty asphalt road, leaning casually against the rear of a black Ford Mustang...')">Copy Prompt</button>
-      </div>
-    </div>
-    
-    <div class="card show portrait">
-      <div class="img-box" onclick="openModal(this)">
-        <img src="https://i.ibb.co.com/ynvvty33/1768724848455.jpg">
-      </div>
-      <div class="card-content">
-        <button class="copy-btn" onclick="copyPrompt(this, 'A hyper-realistic, 8k, cinematic full-body shot of a person seated on a minimalist yellow chair in a bright yellow environment...')">Copy Prompt</button>
-      </div>
+<div id="game-container">
+    <div id="ui-bar">
+        <div class="stat-box">⏱ <span id="timer">120</span>s</div>
+        <div class="stat-box" style="flex-direction: column; align-items: flex-start;">
+            <div style="font-size: 10px; color: #d32f2f; font-weight: bold;">রাগ মিটার</div>
+            <div class="anger-container"><div id="anger-fill"></div></div>
+        </div>
     </div>
 
-    <div class="card show car portrait">
-      <div class="img-box" onclick="openModal(this)">
-        <img src="https://i.ibb.co.com/rRJFV8LK/file-0000000097b071fa90c48cdd644b5fbf.png">
-      </div>
-      <div class="card-content">
-        <button class="copy-btn" onclick="copyPrompt(this, 'Keeping my original face. A cinematic, ultra-realistic full-body portrait of a fashionable young man standing confidently in front of a Mercedes G-Wagon...')">Copy Prompt</button>
-      </div>
+    <div id="character"></div>
+
+    <div id="developer-credit">
+        <div class="dev-name">Developed by SHARIARE ALIF</div>
+        <a href="https://www.facebook.com/share/1DRJavxPdv/" target="_blank" class="fb-link">
+            <img class="fb-icon" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook">
+        </a>
     </div>
 
-    <div class="card show car urban">
-      <div class="img-box" onclick="openModal(this)">
-        <img src="https://i.ibb.co.com/rR6mdD2b/file-000000003c8071fa919e541e68931453.png">
-      </div>
-      <div class="card-content">
-        <button class="copy-btn" onclick="copyPrompt(this, 'Keeping my original face. Urban night street photography with a blue Nissan Skyline GT-R R34 under neon lights...')">Copy Prompt</button>
-      </div>
+    <div id="overlay-screen" onclick="handleStart()">
+        <div id="screen-content">
+            <h1 style="color: #d32f2f; margin: 0;">জননেতাকে কুপোকাত করুন </h1>
+            <p style="color: #666;">তৈরি করেছেন: <b>SHARIARE ALIF</b></p>
+            <div class="pulse-text">শুরু করতে এখানে ট্যাপ করুন
+            নিয়মগুলো নিচে দেওয়া হলো:</br>
+১. স্ক্রিনে মশা দেখা গেলেই তার ওপর দ্রুত ট্যাপ করে মেরে ফেলুন।</br>
+২. মশা কামড় দিলে মানুষটি রেগে যাবে, তাই ৩০ সেকেন্ডের বেশি তাকে কামড়াতে দেবেন না।</br>
+৩. গেমটি ২ মিনিট স্থায়ী হবে, এই সময়ের মধ্যে রাগ মিটার পূর্ণ হতে না দিলে আপনি জিতে যাবেন।
+            
+            </div>
+        </div>
     </div>
+</div>
 
-  </div>
+<audio id="buzz-sound" loop>
+    <source src="https://assets.mixkit.co/active_storage/sfx/2658/2658-preview.mp3" type="audio/mpeg">
+</audio>
 
-  <section class="feedback-section">
-  <h2>Send Feedback</h2>
-  <p>আপনার মতামত আমাদের জানান</p>
-  
-  <form action="https://formsubmit.co/sharearealif7@gmail.com" method="POST">
-    <input type="hidden" name="_next" value="https://shareare.github.io/Alif-s-universe-/">
-    
-    <input type="hidden" name="_captcha" value="false">
+<script>
+    const charImgHappy = "https://i.ibb.co.com/Y4mLSFwK/1769917697923.png";
+    const charImgAngry = "https://i.ibb.co.com/Y7Q4m72n/1769917805189.png";
+    const mosquitoImg = "https://i.ibb.co.com/39PWGvzP/file-00000000602c720b8478529ebd662993.png";
 
-    <input type="text" name="name" placeholder="Your Name" required>
-    <textarea name="message" rows="4" placeholder="Write your feedback here..." required></textarea>
-    <button type="submit" class="submit-btn">Send Message</button>
-  </form>
-</section>
+    const character = document.getElementById('character');
+    const overlayScreen = document.getElementById('overlay-screen');
+    const timerDisplay = document.getElementById('timer');
+    const angerFill = document.getElementById('anger-fill');
+    const buzzSound = document.getElementById('buzz-sound');
 
-  <footer>
-    <div class="social-links">
-      <a href="https://www.facebook.com/share/175ziz2xSB/" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
-      <a href="mailto:sharearealif7@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-    </div>
-    <a href="mailto:sharearealif7@gmail.com" class="contact-mail">sharearealif7@gmail.com</a>
-    <p class="copyright">&copy; 2024-2026 Alif's Universes. All Rights Reserved.</p>
-  </footer>
+    let gameTime = 120;
+    let angerTime = 0;
+    let isGameOver = false;
+    let isGameRunning = false;
+    let activeMosquitoes = 0;
+    let spawnInterval = 1500;
+    let spawnTimer;
 
-  <div id="imageModal" class="modal" onclick="this.style.display='none'"><img id="modalImg"></div>
-  <div id="toast">✅ Prompt Copied!</div>
+    character.style.backgroundImage = `url('${charImgHappy}')`;
 
-  <script>
-    function copyPrompt(btn, text) {
-      navigator.clipboard.writeText(text).then(() => {
-        const toast = document.getElementById("toast");
-        toast.className = "show";
-        const old = btn.innerText;
-        btn.innerText = "COPIED!";
-        btn.style.background = "var(--secondary)"; btn.style.color = "#000";
-        setTimeout(() => { 
-          toast.className = ""; btn.innerText = old; 
-          btn.style.background = "#1d1d1d"; btn.style.color = "var(--primary)";
-        }, 2000);
-      });
+    function handleStart() {
+        if (isGameOver) { location.reload(); return; }
+        if (isGameRunning) return;
+        
+        isGameRunning = true;
+        overlayScreen.style.display = 'none';
+        buzzSound.play().catch(() => {});
+        startLoops();
     }
 
-    function openModal(div) {
-      document.getElementById("imageModal").style.display = "flex";
-      document.getElementById("modalImg").src = div.querySelector('img').src;
+    function startLoops() {
+        // মেইন টাইমার
+        const timerId = setInterval(() => {
+            if (isGameOver) { clearInterval(timerId); return; }
+            gameTime--;
+            timerDisplay.innerText = gameTime;
+
+            // সময়ের সাথে মশা বাড়ান (Difficulty)
+            if (gameTime % 15 === 0 && spawnInterval > 500) {
+                spawnInterval -= 200;
+                resetSpawner();
+            }
+            if (gameTime <= 0) endGame(true);
+        }, 1000);
+
+        // রাগের মিটার
+        setInterval(() => {
+            if (isGameOver) return;
+            if (activeMosquitoes > 0) {
+                angerTime += 0.5;
+                character.style.backgroundImage = `url('${charImgAngry}')`;
+                character.style.transform = "scale(1.08)";
+            } else {
+                character.style.backgroundImage = `url('${charImgHappy}')`;
+                character.style.transform = "scale(1)";
+            }
+            angerFill.style.width = (angerTime / 30 * 100) + "%";
+            if (angerTime >= 30) endGame(false);
+        }, 500);
+
+        resetSpawner();
     }
 
-    function filterGallery(category) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      document.querySelectorAll('.card').forEach(c => {
-        c.classList.toggle('show', category === 'all' || c.classList.contains(category));
-      });
+    function resetSpawner() {
+        clearInterval(spawnTimer);
+        spawnTimer = setInterval(() => {
+            if (!isGameOver) createMosquito();
+        }, spawnInterval);
     }
-  </script>
+
+    function createMosquito() {
+        const m = document.createElement('div');
+        m.className = 'mosquito';
+        m.style.backgroundImage = `url('${mosquitoImg}')`;
+        m.style.backgroundSize = 'contain';
+        m.style.backgroundRepeat = 'no-repeat';
+
+        const side = Math.floor(Math.random() * 4);
+        let x, y;
+        if (side === 0) { x = Math.random() * window.innerWidth; y = -80; }
+        else if (side === 1) { x = window.innerWidth + 80; y = Math.random() * window.innerHeight; }
+        else if (side === 2) { x = Math.random() * window.innerWidth; y = window.innerHeight + 80; }
+        else { x = -80; y = Math.random() * window.innerHeight; }
+
+        m.style.left = x + 'px';
+        m.style.top = y + 'px';
+        document.getElementById('game-container').appendChild(m);
+
+        const targetX = (window.innerWidth / 2) - 35 + (Math.random() * 100 - 50);
+        const targetY = (window.innerHeight / 2) - 80 + (Math.random() * 100 - 50);
+
+        let curX = x, curY = y;
+        let biting = false;
+        let speed = 2.5 + Math.random() * 3;
+
+        const move = setInterval(() => {
+            if (isGameOver) { m.remove(); clearInterval(move); return; }
+            if (!biting) {
+                let dx = targetX - curX, dy = targetY - curY;
+                let dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist > 5) {
+                    curX += (dx/dist) * speed; curY += (dy/dist) * speed;
+                    m.style.left = curX + 'px'; m.style.top = curY + 'px';
+                    m.style.transform = `rotate(${Math.atan2(dy, dx) * 57 + 90}deg)`;
+                } else {
+                    biting = true; activeMosquitoes++;
+                    m.style.transform = `rotate(0deg)`;
+                }
+            }
+        }, 25);
+
+        m.onpointerdown = (e) => {
+            e.stopPropagation();
+            if (biting) activeMosquitoes--;
+            const s = document.createElement('div');
+            s.className = 'splat';
+            s.style.left = e.clientX - 30 + 'px'; s.style.top = e.clientY - 30 + 'px';
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 300);
+            m.remove();
+            clearInterval(move);
+        };
+    }
+
+    function endGame(win) {
+        isGameOver = true;
+        buzzSound.pause();
+        overlayScreen.style.display = 'flex';
+        overlayScreen.innerHTML = `
+            <h1 style="color: ${win ? '#2e7d32' : '#d32f2f'}">${win ? "বিজয়!" : "গেম ওভার!"}</h1>
+            <p>${win ? "আপনি সফলভাবে বেঁচে ফিরেছেন!" : "বেশি কামড়ে জননেতা কুপোকাত হয়েছে!"}</p>
+            <div class="pulse-text">আবার খেলুন</div>
+        `;
+    }
+</script>
 </body>
 </html>
