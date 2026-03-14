@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SolaimanLipi', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #1c1e21;
+}
+
+header {
+    background: linear-gradient(135deg, #b91d1d, #450a0a);
+    color: white;
+    text-align: center;
+    padding: 30px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav button {
+    background: white;
+    color: #b91d1d;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background: #ffdada;
+}
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.news-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.content {
+    padding: 15px;
+}
+
+.content h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.listen-btn {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.read-btn {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* --- Google Fonts (প্রিমিয়াম ফন্টের জন্য) --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;700&family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* --- মূল ব্যাকগ্রাউন্ড গ্রেডিয়েন্ট (Dark, Deep Red to Deep Black) --- */
+    background: linear-gradient(135deg, #2d0000 0%, #000000 100%);
+    background-attachment: fixed; /* ব্যাকগ্রাউন্ড স্ক্রল হবে না, প্রিমিয়াম লুক দিবে */
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif; /* ইংরেজি লেখার জন্য */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* বাংলা লেখাগুলোকে সুন্দর করার জন্য বিশেষ ফন্ট */
+header h1, header p, .content h2, .loading {
+    font-family: 'Noto Serif Bengali', serif;
+}
+
+/* --- হেডার সেকশন --- */
+header {
+    /* আকর্ষণীয় টপ গ্রেডিয়েন্ট (Vibrant Red to Dark Red) */
+    background: linear-gradient(180deg, #b91d1d 0%, #7f1d1d 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-bottom: 2px solid #ff4444; /* একটি চিকন বর্ডার */
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 4px 8px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+/* --- নেভিগেশন বাটন সেকশন --- */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+nav button {
+    background: rgba(255, 255, 255, 0.1); /* হালকা ট্রান্সপারেন্ট */
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 25px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(5px); /* গ্লাস ইফেক্ট */
+    transition: all 0.4s ease;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+nav button:hover {
+    background: #ff4444; /* হোভার করলে রেড কালার */
+    border-color: #ff4444;
+    transform: translateY(-3px); /* একটু উপরে উঠবে */
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+}
+
+/* --- মেইন কন্টেন্ট এরিয়া --- */
+main {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* --- নিউজ কার্ড ডিজাইন (প্রিমিয়াম গ্লাস-মরফিজম) --- */
+.news-card {
+    background: rgba(255, 255, 255, 0.05); /* ট্রান্সপারেন্ট হোয়াইট */
+    backdrop-filter: blur(10px); /* ঝাপসা ইফেক্ট */
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* হালকা বর্ডার */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-8px); /* হোভার করলে উপরে উঠে আসবে */
+    box-shadow: 0 15px 40px rgba(185, 29, 29, 0.3); /* রেডিশ শ্যাডো */
+}
+
+/* ইমেজের ডিজাইন */
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid rgba(185, 29, 29, 0.3);
+}
+
+/* কার্ডের ভেতরের কন্টেন্ট */
+.content {
+    padding: 20px;
+}
+
+.content h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #fff;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* টাইটেল ২ লাইনের বেশি হলে ... দেখাবে */
+    -webkit-box-orient: vertical;
+}
+
+/* --- অ্যাকশন বাটন সেকশন (নিচের বাটনগুলো) --- */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* বিস্তারিত বাটন */
+.read-btn {
+    color: #ffcccc;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.read-btn:hover {
+    color: #ff4444;
+}
+
+/* 'শুনুন' বাটন */
+.listen-btn {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
+}
+
+.listen-btn:hover {
+    background: linear-gradient(135deg, #15803d, #16a34a);
+    box-shadow: 0 6px 15px rgba(22, 163, 74, 0.5);
+    transform: scale(1.05); /* একটু বড় হবে */
+}
+
+/* --- লোডিং মেসেজ ডিজাইন --- */
+.loading {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 50px;
+    grid-column: 1 / -1;
+    color: #ff9999;
+}
+
+/* --- মোবাইল রেসপন্সিভনেস --- */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 0.9rem;
+    }
+    
+    nav button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}

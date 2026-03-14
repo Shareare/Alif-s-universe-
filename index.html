@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ব্রেকিং নিউজ - Shariare Alif</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📰 ব্রেকিং নিউজ এক্সপ্রেস</h1>
+        <p>সারা বিশ্বের সর্বশেষ আপডেট এক নজরে</p>
+        <nav>
+            <button onclick="fetchNews('world')">🌍 বিশ্ব</button>
+            <button onclick="fetchNews('bd')">🇧🇩 বাংলাদেশ</button>
+            <button onclick="fetchNews('technology')">💻 প্রযুক্তি</button>
+            <button onclick="fetchNews('sports')">⚽ খেলাধুলা</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="news-container" class="news-grid">
+            <p class="loading">অপেক্ষা করো, খবরগুলো লোড হচ্ছে...</p>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
