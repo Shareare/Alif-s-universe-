@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অর্ডার কনফার্মেশন</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --success-color: #10b981;
+            --bg-color: #f3f4f6;
+            --location-color: #ef4444;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .order-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        .order-card h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        /* Location Button */
+        .location-btn {
+            background-color: var(--location-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .location-btn:disabled {
+            background-color: #fca5a5;
+        }
+        
+        button#submitBtn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button#submitBtn:disabled {
+            background-color: #93c5fd;
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--success-color);
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+<div class="order-card">
+    <h2>অর্ডার ফর্ম</h2>
+    
+    <form id="orderForm">
+        <div class="form-group">
+            <label for="product_code">পণ্যের ইউনিক কোড</label>
+            <input type="text" name="Product_Code" placeholder="যেমন: A105" required>
+        </div>
+
+        <div class="form-group">
+            <label for="name">আপনার নাম</label>
+            <input type="text" name="Customer_Name" placeholder="সম্পূর্ণ নাম লিখুন" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mobile">মোবাইল নাম্বার</label>
+            <input type="tel" name="Mobile_Number" placeholder="০১XXXXXXXXX" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">বিস্তারিত ঠিকানা</label>
+            <textarea name="Full_Address" rows="3" placeholder="গ্রাম/মহল্লা, থানা, জেলা" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>গুগল ম্যাপ লোকেশন</label>
+            <button type="button" class="location-btn" id="getLocationBtn">
+                📍 বর্তমান লোকেশন দিন
+            </button>
+            <input type="url" name="Google_Map_Link" id="map_link" placeholder="লোকেশন এখানে আসবে" readonly>
+            <small style="color: #888;">(বাটনে ক্লিক করলে অটোমেটিক লিঙ্ক তৈরি হবে)</small>
+        </div>
+
+        <button type="submit" id="submitBtn">অর্ডার কনফার্ম করুন</button>
+    </form>
+</div>
+
+<div id="toast">ধন্যবাদ! আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।</div>
+
+<script>
+    const orderForm = document.getElementById('orderForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const getLocationBtn = document.getElementById('getLocationBtn');
+    const mapInput = document.getElementById('map_link');
+    const toast = document.getElementById('toast');
+
+    // লোকেশন পাওয়ার ফাংশন
+    getLocationBtn.addEventListener('click', () => {
+        if (navigator.geolocation) {
+            getLocationBtn.innerText = "লোকেশন খোঁজা হচ্ছে...";
+            getLocationBtn.disabled = true;
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    // গুগল ম্যাপ লিঙ্ক তৈরি
+                    const mapUrl = `https://www.google.com/maps?q=${lat},${lon}`;
+                    mapInput.value = mapUrl;
+                    getLocationBtn.innerText = "✅ লোকেশন পাওয়া গেছে";
+                    getLocationBtn.style.backgroundColor = "#10b981";
+                },
+                (error) => {
+                    alert("লোকেশন পাওয়া যায়নি। অনুগ্রহ করে আপনার জিপিএস অন করুন অথবা ম্যানুয়ালি ঠিকানা লিখুন।");
+                    getLocationBtn.innerText = "📍 পুনরায় চেষ্টা করুন";
+                    getLocationBtn.disabled = false;
+                }
+            );
+        } else {
+            alert("আপনার ব্রাউজারটি লোকেশন সাপোর্ট করে না।");
+        }
+    });
+
+    // ফর্ম সাবমিট (AJAX)
+    orderForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        submitBtn.disabled = true;
+        submitBtn.innerText = "অর্ডার পাঠানো হচ্ছে...";
+
+        const formData = new FormData(orderForm);
+
+        fetch("https://formsubmit.co/ajax/shariarealif7@gmail.com", {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success === "true") {
+                showToast();
+                orderForm.reset();
+                getLocationBtn.innerText = "📍 বর্তমান লোকেশন দিন";
+                getLocationBtn.style.backgroundColor = "#ef4444";
+                getLocationBtn.disabled = false;
+            } else {
+                alert("দুঃখিত, আবার চেষ্টা করুন।");
+            }
+        })
+        .catch(error => {
+            alert("কিছু একটা সমস্যা হয়েছে!");
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = "অর্ডার কনফার্ম করুন";
+        });
+    });
+
+    function showToast() {
+        toast.className = "show";
+        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+</script>
+
+</body>
+</html>
